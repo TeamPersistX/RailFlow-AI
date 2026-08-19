@@ -1,0 +1,56 @@
+[
+  {
+    "recommendationId": "AI-RT-12472-15557",
+    "conflictId": "RT-12472-15557",
+    "decision": "APPROVED",
+    "selectedTrain": "12472",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T14:16:10.981Z",
+    "recommendedTrain": "12472"
+  },
+  {
+    "recommendationId": "AI-RT-12419-12505",
+    "conflictId": "RT-12419-12505",
+    "decision": "APPROVED",
+    "selectedTrain": "12419",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T13:55:49.930Z",
+    "recommendedTrain": "12419"
+  },
+  {
+    "recommendationId": "AI-RT-12004-12419",
+    "conflictId": "RT-12004-12419",
+    "decision": "REJECTED",
+    "selectedTrain": "12419",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T13:55:34.342Z",
+    "recommendedTrain": "12419"
+  },
+  {
+    "recommendationId": "AI-RT-12055-12565",
+    "conflictId": "RT-12055-12565",
+    "decision": "APPROVED",
+    "selectedTrain": "12055",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T13:55:28.815Z",
+    "recommendedTrain": "12055"
+  },
+  {
+    "recommendationId": "AI-RT-12301-12419",
+    "conflictId": "RT-12301-12419",
+    "decision": "REJECTED",
+    "selectedTrain": "12419",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T13:54:33.215Z",
+    "recommendedTrain": "12419"
+  },
+  {
+    "recommendationId": "AI-RT-12004-12301",
+    "conflictId": "RT-12004-12301",
+    "decision": "APPROVED",
+    "selectedTrain": "12004",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T13:53:40.867Z",
+    "recommendedTrain": "12004"
+  }
+]
