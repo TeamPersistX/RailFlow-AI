@@ -1,5 +1,23 @@
 [
   {
+    "recommendationId": "AI-RT-12055-15557",
+    "conflictId": "RT-12055-15557",
+    "decision": "APPROVED",
+    "selectedTrain": "12055",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T16:52:25.969Z",
+    "recommendedTrain": "12055"
+  },
+  {
+    "recommendationId": "AI-RT-12303-14056",
+    "conflictId": "RT-12303-14056",
+    "decision": "REJECTED",
+    "selectedTrain": "14056",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T16:52:18.449Z",
+    "recommendedTrain": "14056"
+  },
+  {
     "recommendationId": "AI-RT-12303-12553",
     "conflictId": "RT-12303-12553",
     "decision": "REJECTED",
