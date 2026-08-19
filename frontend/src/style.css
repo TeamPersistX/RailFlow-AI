@@ -40,3 +40,9 @@
 .train-icon svg{width:20px}.live-train-main,.live-train-location,.delay{display:grid;gap:4px}.live-train-row b{font-size:13px;color:#26384a}.live-train-row small{font-size:11px;color:#718096}.delay{text-align:right}.delay b{color:#c55a19}
 @media(max-width:850px){.live-train-row{grid-template-columns:40px 1fr 70px}.live-train-location{display:none}}
 .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:#f5f7fb}.login-card{width:min(420px,100%);background:#fff;padding:34px;border-radius:18px;box-shadow:0 18px 55px #1d2a441f;display:flex;flex-direction:column;gap:14px}.login-card .brand{color:#172033;font-size:26px;margin-bottom:8px}.login-card label{display:flex;flex-direction:column;gap:7px;font-weight:600;color:#334155}.login-card input{padding:13px;border:1px solid #d7dce5;border-radius:9px;font:inherit}.login-btn{justify-content:center;padding:13px;border-radius:9px}
+
+.live-actions{display:flex;align-items:center;gap:10px}
+.network-refresh{display:flex;align-items:center;gap:6px;border:1px solid #cbd5e1;background:#fff;color:#26384a;border-radius:8px;padding:8px 11px;font-size:12px;font-weight:700;cursor:pointer}
+.network-refresh:hover{background:#f8fafc}
+.network-refresh:disabled{opacity:.65;cursor:not-allowed}
+.network-refresh svg{width:15px;height:15px}

@@ -9,59 +9,69 @@ function sectionFor(routeIndex) {
   return 'NR-42C';
 }
 
-function initialRouteIndex(train, fallbackIndex) {
-  if (Number.isInteger(train.routeIndex)) {
-    return Math.max(0, Math.min(corridor.length - 1, train.routeIndex));
-  }
+function normalizeIndex(index) {
+  const usable = Math.max(1, corridor.length - 1);
+  return ((index % usable) + usable) % usable;
+}
 
-  const existingIndex = corridor.indexOf(train.currentStation);
-  if (existingIndex >= 0) return existingIndex;
-
-  // Spread unknown/real API station names across the demo corridor instead of
-  // forcing all of them to New Delhi.
-  return fallbackIndex % corridor.length;
+function resetSimulation() {
+  tick = 0;
+  const rows = list().map((train, index) => {
+    if (train.area && train.area !== 'Delhi Division') return train;
+    const routeIndex = normalizeIndex(index * 2 + 1);
+    const delay = Math.max(0, Math.min(20, Number(train.delay || 0)));
+    return {
+      ...train,
+      routeIndex,
+      currentStation: corridor[routeIndex],
+      nextStation: corridor[normalizeIndex(routeIndex + 1)],
+      section: sectionFor(routeIndex),
+      status: 'RUNNING',
+      delay,
+      congestion: delay >= 18 ? 'HIGH' : delay >= 7 ? 'MEDIUM' : 'LOW',
+      lastUpdated: new Date().toISOString(),
+      simulation: true
+    };
+  });
+  writeAll(rows);
+  return rows;
 }
 
 function simulate() {
   tick += 1;
-
   const rows = list().map((train, index) => {
-    if (train.area !== 'Delhi Division') return train;
+    if (train.area && train.area !== 'Delhi Division') return train;
 
-    const currentIndex = initialRouteIndex(train, index);
-    const moveEvery = 2 + (index % 3); // different trains move at different speeds
-    const shouldMove = (tick + index) % moveEvery === 0;
+    let currentIndex = Number.isInteger(train.routeIndex)
+      ? train.routeIndex
+      : corridor.indexOf(train.currentStation);
+    if (currentIndex < 0) currentIndex = normalizeIndex(index * 2 + 1);
 
-    let nextIndex = currentIndex;
-    if (shouldMove && train.status !== 'COMPLETED') {
-      nextIndex = Math.min(corridor.length - 1, currentIndex + 1);
+    // COMPLETED trains are immediately re-entered into the corridor.
+    if (train.status === 'COMPLETED' || currentIndex >= corridor.length - 1) {
+      currentIndex = normalizeIndex(index * 2 + tick);
     }
+
+    const moveEvery = 2 + (index % 3);
+    const shouldMove = (tick + index) % moveEvery === 0;
+    let nextIndex = currentIndex;
+    if (shouldMove) nextIndex = normalizeIndex(currentIndex + 1);
 
     const previousDelay = Math.max(0, Number(train.delay || 0));
     let delayChange = 0;
-
-    // Small operational variations instead of large random jumps.
     if ((tick + index * 2) % 11 === 0) delayChange = 2;
     else if ((tick + index) % 7 === 0 && previousDelay > 0) delayChange = -1;
-
     const delay = Math.max(0, Math.min(40, previousDelay + delayChange));
-    const completed = nextIndex >= corridor.length - 1;
 
     let status = 'RUNNING';
-    if (completed) status = 'COMPLETED';
-    else if (delay >= 12) status = 'DELAYED';
+    if (delay >= 12) status = 'DELAYED';
     else if (!shouldMove && (tick + index) % 5 === 0) status = 'AT_STATION';
-
-    const currentStation = corridor[nextIndex];
-    const nextStation = completed
-      ? 'End of Route'
-      : corridor[Math.min(corridor.length - 1, nextIndex + 1)];
 
     return {
       ...train,
       routeIndex: nextIndex,
-      currentStation,
-      nextStation,
+      currentStation: corridor[nextIndex],
+      nextStation: corridor[normalizeIndex(nextIndex + 1)],
       section: sectionFor(nextIndex),
       delay,
       status,
@@ -70,9 +80,8 @@ function simulate() {
       simulation: true
     };
   });
-
   writeAll(rows);
   return rows;
 }
 
-module.exports = { simulate };
+module.exports = { simulate, resetSimulation };

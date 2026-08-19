@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "recommendationId": "AI-RT-12303-12553",
+    "conflictId": "RT-12303-12553",
+    "decision": "REJECTED",
+    "selectedTrain": "12303",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T16:34:25.434Z",
+    "recommendedTrain": "12303"
+  },
+  {
+    "recommendationId": "AI-RT-12301-12303",
+    "conflictId": "RT-12301-12303",
+    "decision": "APPROVED",
+    "selectedTrain": "12303",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T16:34:20.534Z",
+    "recommendedTrain": "12303"
+  },
+  {
+    "recommendationId": "AI-RT-12553-14056",
+    "conflictId": "RT-12553-14056",
+    "decision": "APPROVED",
+    "selectedTrain": "14056",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T16:34:07.813Z",
+    "recommendedTrain": "14056"
+  },
+  {
+    "recommendationId": "AI-RT-12004-12301",
+    "conflictId": "RT-12004-12301",
+    "decision": "APPROVED",
+    "selectedTrain": "12004",
+    "controllerNote": "",
+    "timestamp": "2026-08-19T16:33:42.445Z",
+    "recommendedTrain": "12004"
+  }
+]

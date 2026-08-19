@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { list, upsert } = require('./services/trainStore');
-const { simulate } = require('./simulator/trainSimulator');
+const { simulate, resetSimulation } = require('./simulator/trainSimulator');
 const { fetchLive } = require('./services/liveTrain');
 const { corridor } = require('./simulator/routes');
 
@@ -490,6 +490,14 @@ app.get('/api/recommendations', async (req, res) => {
 app.post('/api/recommendations/generate', (req, res) =>
   res.json({ success: true, message: 'Recommendations refreshed from current network state.' })
 );
+
+app.post('/api/simulator/refresh', (req, res) => {
+  const trains = resetSimulation();
+  const payload = network();
+  io.emit('telemetry', payload);
+  io.emit('conflicts', calcConflicts());
+  res.json({ success: true, message: 'Live network refreshed.', data: trains });
+});
 
 io.on('connection', (socket) => {
   socket.emit('telemetry', network());
