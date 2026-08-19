@@ -33,7 +33,7 @@
 .train-badge{transition:left 1.2s linear,top 1.2s linear;}
 
 /* No-map live train operations */
-.active-monitor{min-height:365px}
+.active-monitor{min-height:365px;padding:2px 0 0}.live-monitor-head{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 14px}.live-monitor-head>div{display:grid;gap:4px}.live-monitor-head b{font-size:16px;color:#26384a}.live-monitor-head small{font-size:12px;color:#718096}.live-monitor-head span{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#28715b}
 .live-train-list{display:grid;gap:10px}
 .live-train-row{display:grid;grid-template-columns:42px minmax(150px,1.2fr) minmax(150px,1fr) 95px 70px;gap:12px;align-items:center;padding:14px;border:1px solid #e5eaf0;border-radius:12px;background:#fbfcfe}
 .train-icon{width:38px;height:38px;border-radius:10px;background:#e8f0f8;color:#2d66a1;display:grid;place-items:center}
